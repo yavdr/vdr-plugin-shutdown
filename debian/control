@@ -1,0 +1,13 @@
+Source: vdr-plugin-shutdown
+Section: video
+Priority: extra
+Maintainer: Gerald Dachs <gda@dachsweb.de>
+Build-Depends: debhelper (>= 7.0.50~), vdr-dev (>= 1.7.18), gettext
+Standards-Version: 3.9.1
+Homepage: https://svn.origo.ethz.ch/yavdr/trunk/vdr-plugin-shutdown/
+
+Package: vdr-plugin-shutdown
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${vdr:Depends}
+Description: shutdown via svdrp
+ Allows shutdown via svdrp
