@@ -14,6 +14,8 @@
 
 #include <time.h>
 #include <vdr/tools.h>
+#include <sstream>
+#include <iostream>
 
 class cPlugShutdownHandler {
 private:
@@ -80,7 +82,7 @@ public:
        ///< Returns immediately and without user interaction if Ask = false.
        ///< Asks for confirmation if Ask = true.
        ///< Returns true if ready for restart.
-  bool DoShutdown(bool Force);
+  cString DoShutdown(bool Force);
        ///< Call the shutdown script with data of the next pending timer.
        ///< Fails if Force = false and a timer is running or within MinEventTimeout.
        ///< Always calls shutdown on Force = true.

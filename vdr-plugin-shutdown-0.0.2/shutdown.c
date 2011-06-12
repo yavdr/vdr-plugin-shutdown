@@ -177,8 +177,25 @@ bool cPlugShutdownHandler::ConfirmRestart(bool Interactive)
   return true;
 }
 
-bool cPlugShutdownHandler::DoShutdown(bool Force)
+cString cPlugShutdownHandler::DoShutdown(bool Force)
 {
+  const char* external_script = "/usr/lib/vdr/xbmc-vdr-shutdown";
+  FILE* in;
+  std::ostringstream s;
+
+  if ( (in = popen(external_script, "r" )) != NULL ) {
+     char tmp;
+     do
+     {
+       tmp = fgetc(in);
+       if (tmp != EOF)
+          s<<tmp;
+     }while(tmp != EOF);
+     fclose(in);
+  } 
+  std::string res = s.str();
+  if ( res.length() > 0 ) { return res.c_str(); }
+
   time_t Now = time(NULL);
   cTimer *timer = Timers.GetNextActiveTimer();
   cPlugin *Plugin = cPluginManager::GetNextWakeupPlugin();
@@ -193,7 +210,7 @@ bool cPlugShutdownHandler::DoShutdown(bool Force)
 
   if (Next && Delta < Setup.MinEventTimeout * 60) {
      if (!Force)
-        return false;
+        return cString::sprintf("A new timer will be started in the next %i minutes.", Setup.MinEventTimeout);
      Delta = Setup.MinEventTimeout * 60;
      Next = Now + Delta;
      timer = NULL;
@@ -211,5 +228,5 @@ bool cPlugShutdownHandler::DoShutdown(bool Force)
   else
      CallShutdownCommand(Next, 0, "", Force); // Next should always be 0 here. Just for safety, pass it.
 
-  return true;
+  return "";
 }

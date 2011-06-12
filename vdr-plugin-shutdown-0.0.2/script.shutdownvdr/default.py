@@ -55,7 +55,7 @@ class Script:
     DEBUG = True
 
     VDR_PLUG_CMD = 'PLUG shutdown CONF'
-    VDR_PLUG_CMD_FORCE = 'PLUG shutdown FORCE'  # fixme: needs a real cmd!
+    VDR_PLUG_CMD_FORCE = 'PLUG shutdown SHDN'
     VDR_PLUG_RET_CONFIRMED = 900
     VDR_PLUG_RET_REFUSED = 500
 

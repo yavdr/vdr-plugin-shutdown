@@ -43,6 +43,14 @@ cString cPluginShutdown::SVDRPCommand(const char *Command, const char *Option, i
       Message = "shutdown confirmed";
 
     return Message;
+  } else if (strcasecmp(Command, "SHDN") == 0){
+    isyslog("try to shutdown");
+    cString Message = PlugShutdownHandler.DoShutdown(false);
+    if (!isempty(*Message))
+      ReplyCode = 500;
+    else
+      Message = "will shutdown";
+    return Message;
   } 
   return NULL;
 }
