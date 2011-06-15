@@ -45,7 +45,7 @@ cString cPluginShutdown::SVDRPCommand(const char *Command, const char *Option, i
     return Message;
   } else if (strcasecmp(Command, "SHDN") == 0){
     isyslog("try to shutdown");
-    cString Message = PlugShutdownHandler.DoShutdown(false);
+    cString Message = PlugShutdownHandler.DoShutdown(true);
     if (!isempty(*Message))
       ReplyCode = 500;
     else

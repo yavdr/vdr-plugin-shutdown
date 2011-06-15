@@ -19,6 +19,7 @@
 #include <vdr/cutter.h>
 #include <vdr/i18n.h>
 #include <vdr/interface.h>
+#include <vdr/shutdown.h>
 #include <vdr/menu.h>
 #include <vdr/plugin.h>
 #include <vdr/timers.h>
@@ -194,7 +195,9 @@ cString cPlugShutdownHandler::DoShutdown(bool Force)
      fclose(in);
   } 
   std::string res = s.str();
-  if ( res.length() > 0 ) { return res.c_str(); }
+  if ( res.length() > 0 ) { 
+     return res.c_str();
+  }
 
   time_t Now = time(NULL);
   cTimer *timer = Timers.GetNextActiveTimer();
@@ -219,14 +222,14 @@ cString cPlugShutdownHandler::DoShutdown(bool Force)
 
   if (Next && timer) {
      dsyslog("next timer event at %s", *TimeToString(Next));
-     CallShutdownCommand(Next, timer->Channel()->Number(), timer->File(), Force);
+     ShutdownHandler.CallShutdownCommand(Next, timer->Channel()->Number(), timer->File(), Force);
      }
   else if (Next && Plugin) {
-     CallShutdownCommand(Next, 0, Plugin->Name(), Force);
+     ShutdownHandler.CallShutdownCommand(Next, 0, Plugin->Name(), Force);
      dsyslog("next plugin wakeup at %s", *TimeToString(Next));
      }
   else
-     CallShutdownCommand(Next, 0, "", Force); // Next should always be 0 here. Just for safety, pass it.
+     ShutdownHandler.CallShutdownCommand(Next, 0, "", Force); // Next should always be 0 here. Just for safety, pass it.
 
   return "";
 }

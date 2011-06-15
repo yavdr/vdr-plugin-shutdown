@@ -9,8 +9,8 @@
  * $Id: shutdown.h 2.0 2007/02/24 17:23:59 kls Exp $
  */
 
-#ifndef __SHUTDOWN_H
-#define __SHUTDOWN_H
+#ifndef __PLUG_SHUTDOWN_H
+#define __PLUG_SHUTDOWN_H
 
 #include <time.h>
 #include <vdr/tools.h>
