@@ -1,4 +1,8 @@
 #!/bin/bash
+
+case "$1" in
+    configure)
+
 function xsl_replace
 {
 #param 1 path
@@ -56,3 +60,12 @@ xsl_replace $FILE1_PATH2 $FILE1 $FILE1_REPLACE
 xsl_replace $FILE2_PATH $FILE2 $FILE2_REPLACE
 xsl_replace $FILE3_PATH $FILE3 $FILE3_REPLACE
 xsl_replace $FILE4_PATH $FILE4 $FILE4_REPLACE
+
+        ;;
+esac
+
+
+#DEBHELPER#
+
+exit 0
+
