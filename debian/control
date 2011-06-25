@@ -11,3 +11,4 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${vdr:Depends}
 Description: shutdown via svdrp
  Allows shutdown via svdrp
+
