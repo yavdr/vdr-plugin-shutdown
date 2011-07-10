@@ -41,19 +41,19 @@ fi
 FILE1="/usr/share/xbmc/system/keymaps/keyboard.xml"
 FILE1_PATH1="/keymap/LoginScreen/keyboard/end[1]"
 FILE1_PATH2="/keymap/Home/keyboard/end[1]"
-FILE1_REPLACE="<end>XBMC.RunScript(special://home/addons/script.shutdownvdr/default.py)</end>"
+FILE1_REPLACE="<end>XBMC.RunScript(special://xbmc/addons/script.shutdownvdr/default.py)</end>"
 
 FILE2="/usr/share/xbmc/system/keymaps/remote.xml"
 FILE2_PATH="/keymap/global/remote/power[1]"
-FILE2_REPLACE="<power>XBMC.RunScript(special://home/addons/script.shutdownvdr/default.py)</power>"
+FILE2_REPLACE="<power>XBMC.RunScript(special://xbmc/addons/script.shutdownvdr/default.py)</power>"
 
 FILE3="/usr/share/xbmc/system/keymaps/joystick.Harmony.xml"
 FILE3_PATH="/keymap/global/joystick[1]/button[@id='66']"
-FILE3_REPLACE="<button id=\"66\">XBMC.RunScript(special://home/addons/script.shutdownvdr/default.py)</button>"
+FILE3_REPLACE="<button id=\"66\">XBMC.RunScript(special://xbmc/addons/script.shutdownvdr/default.py)</button>"
 
 FILE4="/usr/share/xbmc/addons/skin.confluence/720p/DialogButtonMenu.xml"
 FILE4_PATH="/window[id='111']/controls/control[@id='9000']/control[@id='2']/onclick"
-FILE4_REPLACE="<onclick>XBMC.RunScript(special://home/addons/script.shutdownvdr/default.py)</onclick>"
+FILE4_REPLACE="<onclick>XBMC.RunScript(special://xbmc/script.shutdownvdr/default.py)</onclick>"
 
 xsl_replace "$FILE1_PATH2" "$FILE1" "$FILE1_REPLACE"
 xsl_replace "$FILE2_PATH" "$FILE2" "$FILE2_REPLACE"
